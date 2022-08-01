@@ -45,7 +45,7 @@ Please ensure your code is adequately documented. Some things to consider for do
 #### Logging
 
 * Ensure there is adequate logging for positive paths as well as exceptional paths. As a corollary to this, ensure logs are not noisy.
-* Do not use fmt.Println to log messages. Use the `logrus` logger.
+* Do not use fmt.Println to log messages. Use the default logger to log.
 * Use logging levels correctly: set level to `debug` for verbose logs useful for only for debugging.
 
 #### Code Formatting
