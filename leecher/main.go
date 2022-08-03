@@ -1,9 +1,11 @@
 package leecher
 
 import (
+	"io/ioutil"
 	"log"
 
 	"github.com/arpitbbhayani/retorrent/entities"
+	"github.com/arpitbbhayani/retorrent/torrent"
 	"github.com/arpitbbhayani/retorrent/tracker"
 )
 
@@ -21,6 +23,14 @@ func Leech(t *entities.Torrent) error {
 		return err
 	}
 	log.Printf("found %d peers\n", len(peers))
+
+	dir, err := ioutil.TempDir("/tmp", "123")
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("creating temporary directory %s\n", dir)
+
+	torrent.Download(t, peers, dir)
 
 	return nil
 }
