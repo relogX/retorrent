@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -33,7 +34,7 @@ func initConfig() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	if err := viper.ReadInConfig(); err != nil {
-		fmt.Println("Can't read config:", err)
+		log.Fatalln("Can't read config:", err)
 		os.Exit(1)
 	}
 }

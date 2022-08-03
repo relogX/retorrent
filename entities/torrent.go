@@ -10,4 +10,5 @@ type FileInfo struct {
 type Torrent struct {
 	Announce string
 	Info     FileInfo
+	InfoRaw  map[string]interface{}
 }

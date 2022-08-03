@@ -47,6 +47,7 @@ func getTorrent(bReader *bufio.Reader) (*entities.Torrent, error) {
 		Name:        tInfoData["name"].(string),
 		Pieces:      batch([]byte(tInfoData["pieces"].(string)), 20),
 	}
+	torrent.InfoRaw = tData["info"].(map[string]interface{})
 
 	return torrent, nil
 }

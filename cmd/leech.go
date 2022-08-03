@@ -2,8 +2,9 @@ package cmd
 
 import (
 	"errors"
-	"log"
 
+	"github.com/arpitbbhayani/retorrent/leecher"
+	"github.com/arpitbbhayani/retorrent/torrent"
 	"github.com/spf13/cobra"
 )
 
@@ -18,8 +19,13 @@ var leechCmd = &cobra.Command{
 		if len(args) < 1 {
 			return errors.New("torrent file is required")
 		}
-		torrentFile := args[0]
-		log.Println("running leecher for torrent file", torrentFile)
+
+		torrentData, err := torrent.ParseTorrentFile(args[0])
+		if err != nil {
+			return err
+		}
+
+		leecher.Leech(torrentData)
 		return nil
 	},
 }
